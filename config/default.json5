@@ -1,0 +1,5 @@
+{
+    eztv: {
+        rssUrl: "https://eztv.ag/ezrss.xml"
+    }
+}

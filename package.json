@@ -1,0 +1,21 @@
+{
+  "name": "show-downloader",
+  "version": "1.0.0",
+  "description": "Downloads our shows",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Josiah Wilkerson",
+  "license": "ISC",
+  "dependencies": {
+    "config": "^1.30.0",
+    "eztv-api": "0.0.11",
+    "fuzzyjs": "^2.1.2",
+    "json5": "^1.0.1",
+    "moment": "^2.22.1",
+    "nedb-promise": "^2.0.1",
+    "rss-parser": "^3.1.2",
+    "webtorrent": "^0.99.4"
+  }
+}
