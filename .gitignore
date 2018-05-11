@@ -7,3 +7,4 @@ download/
 
 dbs/*.json
 test.js
+config/local.json5

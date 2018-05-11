@@ -16,6 +16,7 @@
     "moment": "^2.22.1",
     "nedb-promise": "^2.0.1",
     "rss-parser": "^3.1.2",
+    "twitter": "^1.7.1",
     "webtorrent": "^0.99.4"
   }
 }

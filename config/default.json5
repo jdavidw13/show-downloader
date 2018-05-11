@@ -1,5 +1,13 @@
 {
     eztv: {
         rssUrl: "https://eztv.ag/ezrss.xml"
+    },
+
+    twitter: {
+        consumerKey: "",
+        consumerSecret: "",
+        accessToken: "",
+        accessTokenSecret: "",
+        validUserIds: []
     }
 }
