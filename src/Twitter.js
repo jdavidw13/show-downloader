@@ -77,6 +77,7 @@ function getClient() {
  * }
  */
 async function tweet(msg) {
+    log.info("tweeting [%s]", msg);
     return getClient().post("statuses/update", {status: msg});
 }
 

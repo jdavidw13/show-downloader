@@ -48,12 +48,24 @@ async function getShowDb() {
  */
 async function addEpisodeWatch(episode) {
     const db = await getWatchDb();
+    let added = null;
     try {
-        await db.insert(episode);
+        added = await db.insert(episode);
         log.log("added episode watch for \"%s\"", episode.title);
     } catch(err) {
         log.error("attempting to insert non-unique guid ", episode.guid);
     }
+    return added;
+}
+
+/**
+ * @param {Object} episode - eztv rss item object
+ * @returns {boolean} true if episode watch exists
+ */
+async function containsEpisode(episode) {
+    const db = await getWatchDb();
+    const results = await db.cfind({guid: episode.guid}).exec();
+    return results.length > 0;
 }
 
 /**
@@ -108,6 +120,7 @@ async function getShows() {
 module.exports.addEpisodeWatch = addEpisodeWatch;
 module.exports.removeEpisodeWatch = removeEpisodeWatch;
 module.exports.getWatchedEpisodes = getWatchedEpisodes;
+module.exports.containsEpisode = containsEpisode;
 
 module.exports.addShow = addShow;
 module.exports.getShows = getShows;

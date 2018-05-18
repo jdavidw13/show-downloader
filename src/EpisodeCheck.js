@@ -4,9 +4,24 @@ const config = require("config");
 const db = require("./Db");
 const EztvRss = require("./EztvRss");
 const log = require("./Logger");
+const twitter = require("./Twitter");
+const util = require("util");
 
 async function watchEpisode(episode) {
-    db.addEpisodeWatch(episode);
+    const episodeWatched = await db.containsEpisode(episode);
+    if (episodeWatched) return;
+
+    const msg = buildNewWatchTweetMessage(episode);
+    const tweet = await twitter.tweet(msg);
+    episode.tweet_id = tweet.id_str;
+    const watch = await db.addEpisodeWatch(episode);
+    return watch;
+}
+
+function buildNewWatchTweetMessage(episode) {
+    const size = Number.parseFloat(episode.enclosure.length / 1000000).toFixed(2) + " MB";
+    const message = util.format("%s\n%s", episode.title, size);
+    return message;
 }
 
 /**
